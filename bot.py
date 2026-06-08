@@ -123,12 +123,7 @@ def group_selection_keyboard(user_id: int, selected: list, page: int = 0):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
-    if not is_admin(user.id):
-        await update.message.reply_text(
-            "❌ *Unauthorized!*\n\nTum is bot ke admin nahi ho.",
-            parse_mode=ParseMode.MARKDOWN,
-        )
-        return ConversationHandler.END
+     
 
     db.register_user(user.id, user.username or user.first_name)
     context.user_data.clear()
